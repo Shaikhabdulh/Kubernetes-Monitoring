@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tic-tac-toe
+spec:
+  containers:
+  - name: game
+    image: sah1/shaikh_abdulhamid:tic_tac_toe
+    stdin: true
+    tty: true
+  restartPolicy: Never

@@ -1,5 +1,5 @@
 # Use Alpine Linux as base
-FROM alpine:latest
+FROM alpine:3.19
 
 # Install lighttpd
 RUN apk add --no-cache lighttpd

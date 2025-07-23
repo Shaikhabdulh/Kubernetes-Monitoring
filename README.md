@@ -1,12 +1,3 @@
-Absolutely! Here's an **enhanced `README.md`** with:
-
-* ✅ Kubernetes overview (What, Why, Where, How, When)
-* ✅ Detailed comparison with traditional deployment
-* ✅ Comparison with other orchestration tools (Docker Swarm, Nomad, OpenShift)
-
----
-
-````markdown
 # 🚀 Day 21 Task 2: Deploy NGINX Pod + Service on Local Kubernetes
 
 ---
@@ -16,6 +7,26 @@ Absolutely! Here's an **enhanced `README.md`** with:
 **Kubernetes (K8s)** is an **open-source container orchestration platform** that automates the deployment, scaling, and management of containerized applications.
 
 > Originally developed by Google, now maintained by the Cloud Native Computing Foundation (CNCF).
+
+---
+
+### 📁 Git Structure
+
+```
+Kubernetes-Monitoring/
+└── nginx-k8s-deployment/
+    ├── nginx-pod-service.yaml   # NGINX Deployment File
+    └── README.md                # Project Documentation
+```
+
+---
+
+### 📝 Description of Each File
+
+| File Name                | Purpose                                      |
+| ------------------------ | -------------------------------------------- |
+| `nginx-pod-service.yaml` | Kubernetes manifest (Pod + NodePort Service) |
+| `README.md`              | Full documentation: what, why, how, usage    |
 
 ---
 
@@ -102,14 +113,131 @@ Absolutely! Here's an **enhanced `README.md`** with:
 
 ---
 
-## 📁 Git Structure
+# 🧠 Kubernetes CLI Cheat Sheet
 
-Kubernetes-Monitoring/
-└── nginx-k8s-deployment/
-    ├── nginx-pod-service.yaml   # NGINX Deployment File 
-    └── README.md
+This comprehensive cheat sheet includes essential `kubectl` and `minikube` commands categorized for clarity.
 
-## 🚀 How to Deploy NGINX on Kubernetes
+---
+
+## 🔹 `kubectl` – Kubernetes Command-Line Tool
+
+### 🧾 Configuration & Context
+
+| Command                             | Description                           |
+| ----------------------------------- | ------------------------------------- |
+| `kubectl version`                   | Show client & server version          |
+| `kubectl config view`               | View Kube config (contexts, clusters) |
+| `kubectl config get-contexts`       | List available contexts               |
+| `kubectl config use-context <name>` | Set current context                   |
+| `kubectl cluster-info`              | Display cluster information           |
+
+### 📋 Get & Describe Resources
+
+| Command                              | Description                        |
+| ------------------------------------ | ---------------------------------- |
+| `kubectl get nodes`                  | List all cluster nodes             |
+| `kubectl get pods`                   | List all pods in current namespace |
+| `kubectl get all`                    | Show all resources                 |
+| `kubectl get svc`                    | List all services                  |
+| `kubectl get deployment`             | List all deployments               |
+| `kubectl get replicaset`             | List ReplicaSets                   |
+| `kubectl get namespace`              | List all namespaces                |
+| `kubectl describe <resource> <name>` | Show detailed info                 |
+
+### 📁 Namespaces
+
+| Command                           | Description            |
+| --------------------------------- | ---------------------- |
+| `kubectl create namespace <name>` | Create a new namespace |
+| `kubectl delete namespace <name>` | Delete a namespace     |
+
+### 🛠️ Create, Apply, Delete Resources
+
+| Command                       | Description                |
+| ----------------------------- | -------------------------- |
+| `kubectl apply -f file.yaml`  | Apply resources from YAML  |
+| `kubectl delete -f file.yaml` | Delete resources from YAML |
+| `kubectl create -f file.yaml` | Create resource from YAML  |
+
+### 🔄 Managing Pods
+
+| Command                                              | Description               |
+| ---------------------------------------------------- | ------------------------- |
+| `kubectl expose pod <pod> --type=NodePort --port=80` | Expose a pod as a service |
+| `kubectl port-forward pod/<pod-name> 8080:80`        | Forward port to localhost |
+| `kubectl logs <pod>`                                 | View container logs       |
+| `kubectl exec -it <pod> -- /bin/bash`                | SSH into a running pod    |
+| `kubectl delete pod <pod-name>`                      | Delete a pod              |
+
+### ⚙️ Deployment Management
+
+| Command                                                   | Description                     |
+| --------------------------------------------------------- | ------------------------------- |
+| `kubectl rollout restart deployment <name>`               | Restart deployment              |
+| `kubectl rollout status deployment/<name>`                | Check deployment rollout status |
+| `kubectl scale deployment <name> --replicas=3`            | Scale deployment                |
+| `kubectl set image deployment/<name> <container>=<image>` | Update container image          |
+
+### 🔍 Monitoring & Troubleshooting
+
+| Command                       | Description                     |
+| ----------------------------- | ------------------------------- |
+| `kubectl top node`            | Show CPU/memory usage for nodes |
+| `kubectl top pod`             | Show CPU/memory usage for pods  |
+| `kubectl describe pod <name>` | Describe a specific pod         |
+
+---
+
+## 🔹 `minikube` – Local Kubernetes Cluster Tool
+
+### 🚀 Cluster Lifecycle
+
+| Command                 | Description                  |
+| ----------------------- | ---------------------------- |
+| `minikube start`        | Start the cluster            |
+| `minikube stop`         | Stop the cluster             |
+| `minikube delete`       | Delete the cluster           |
+| `minikube status`       | Show current cluster status  |
+| `minikube delete --all` | Delete all clusters/profiles |
+
+### 🖥️ Dashboard & IP
+
+| Command              | Description                     |
+| -------------------- | ------------------------------- |
+| `minikube dashboard` | Open dashboard in browser       |
+| `minikube ip`        | Get Minikube cluster IP address |
+| `minikube ssh`       | SSH into the Minikube VM        |
+
+### 🧩 Addons
+
+| Command                           | Description      |
+| --------------------------------- | ---------------- |
+| `minikube addons list`            | List all addons  |
+| `minikube addons enable <addon>`  | Enable an addon  |
+| `minikube addons disable <addon>` | Disable an addon |
+
+### 🌐 Services
+
+| Command                             | Description                          |
+| ----------------------------------- | ------------------------------------ |
+| `minikube service <svc>`            | Open service in browser              |
+| `minikube service list`             | List URLs of services                |
+| `minikube tunnel`                   | Open tunnel for LoadBalancer service |
+| `minikube mount <host>:<container>` | Mount host directory to Minikube VM  |
+
+---
+
+## 🔗 Relationship Between `kubectl` and `minikube`
+
+| Tool       | Role                                           |
+| ---------- | ---------------------------------------------- |
+| `minikube` | Creates and manages a local Kubernetes cluster |
+| `kubectl`  | Interacts with the cluster created by Minikube |
+
+🧭 **Note**: When `minikube start` is run, it automatically sets the context for `kubectl` to point to the Minikube cluster.
+
+---
+## 🚀 Let's Start: How to Deploy NGINX on Kubernetes
 
 ### 📝 Step 1: Create YAML file
 
@@ -206,21 +334,4 @@ kubectl delete -f nginx-pod-service.yaml
 
 * [Kubernetes Official Docs](https://kubernetes.io/docs/)
 * [Minikube GitHub](https://github.com/kubernetes/minikube)
-* [Docker Swarm vs K8s](https://docs.docker.com/engine/swarm/kubernetes/)
 * [Nomad by HashiCorp](https://www.nomadproject.io/)
-
----
-
-> 🔥 **Pro Tip:** Start local with Minikube or kind, then explore managed services like EKS (AWS), GKE (Google), or AKS (Azure).
-
-```
-
----
-
-Would you like me to:
-
-- Export this as a `.md` file?
-- Help turn this into a GitHub project with folder structure, screenshots, and enhanced diagrams?
-
-Let me know!
-```

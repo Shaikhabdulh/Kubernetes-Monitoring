@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Smart Tic Tac Toe</h1>
+
+  <label><input type="checkbox" id="aiToggle"> Play vs AI</label>
+
+  <div class="board" id="board"></div>
+  <p id="status">Player X's Turn</p>
+  <button onclick="resetGame()">Reset</button>
+
+  <!-- Sound Effects -->
+  <audio id="clickSound" src="sounds/click.mp3"></audio>
+  <audio id="winSound" src="sounds/win.mp3"></audio>
+  <audio id="drawSound" src="sounds/draw.mp3"></audio>
+  <audio id="resetSound" src="sounds/reset.mp3"></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>
